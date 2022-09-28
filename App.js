@@ -1,12 +1,54 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import MovieList from './android/components/MovieList';
+import Search from './android/components/Search';
+import MovieListHeading from './android/components/MovieListHeading';
 
 export default function App() {
+
+  const [movies,setMovies] = useState([]);
+  const [searchValue,setSearchValue] = useState('avengers')
+
+const getMovieRequest = async () => {
+  const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=29fd1127`
+
+  const response = await fetch (url);
+  const responseJson= await response.json();
+
+
+  if(responseJson.Search){
+    setMovies(responseJson.Search);
+  }
+}
+
+useEffect(()=>{
+  getMovieRequest(searchValue);
+},[searchValue])
+
+
+
+
+
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+
       <StatusBar style="auto" />
+
+      <View >
+      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+      </View>
+      
+       <View>
+       <MovieListHeading  heading="Movies"/>
+       </View>
+
+
+      <View>
+      <MovieList movies={movies}/>
+      </View>
+
     </View>
   );
 }
@@ -14,8 +56,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: '#141414',
     justifyContent: 'center',
+    
   },
 });
