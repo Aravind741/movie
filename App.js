@@ -1,3 +1,4 @@
+
 import { StatusBar } from 'expo-status-bar';
 import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -32,6 +33,8 @@ useEffect(()=>{
 
 
   return (
+  <SafeAreaView>
+   
     <View style={styles.container}>
 
       <StatusBar style="auto" />
@@ -49,15 +52,20 @@ useEffect(()=>{
       <MovieList movies={movies}/>
       </View>
 
-    </View>
+
+ 
+    </SafeAreaView>
+  
+   
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+
+    paddingTop: 50
     backgroundColor: '#141414',
-    justifyContent: 'center',
-    
+
   },
 });
