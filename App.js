@@ -1,15 +1,15 @@
 
 import { StatusBar } from 'expo-status-bar';
 import React,{useState,useEffect} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import MovieList from './android/components/MovieList';
-import Search from './android/components/Search';
-import MovieListHeading from './android/components/MovieListHeading';
+import { StyleSheet, Text, View,SafeAreaView } from 'react-native';
+import MovieList from './Components/MovieList'
+import Search from './Components/Search';
+import MovieListHeading from './Components/MovieListHeading';
 
 export default function App() {
 
   const [movies,setMovies] = useState([]);
-  const [searchValue,setSearchValue] = useState('avengers')
+  const [searchValue,setSearchValue] = useState('Avengers')
 
 const getMovieRequest = async () => {
   const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=29fd1127`
@@ -33,27 +33,25 @@ useEffect(()=>{
 
 
   return (
-  <SafeAreaView>
-   
-    <View style={styles.container}>
+    
+  <SafeAreaView style={styles.container}>
+  
 
-      <StatusBar style="auto" />
-
-      <View >
-      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
-      </View>
-      
-       <View>
+   <View>
        <MovieListHeading  heading="Movies"/>
        </View>
+    <View >
 
-
-      <View>
-      <MovieList movies={movies}/>
+     
+    <Search searchValue={searchValue} setSearchValue={setSearchValue} movies={movies} setMovies={setMovies}  />
+ </View>
+ <View style={styles.container}>
+     
+      <MovieList movies={movies}  />
       </View>
 
 
- 
+  
     </SafeAreaView>
   
    
@@ -63,9 +61,11 @@ useEffect(()=>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
-    paddingTop: 50
+  paddingTop:40,
     backgroundColor: '#141414',
-
+    
+    
   },
+ 
+  
 });

@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function MovieList(props) {
   return (
-   <SafeAreaView>
+    <SafeAreaView>
     <View style={{height:200, width:390, marginLeft:5, borderWidth:0.5, borderColor:'#dddddd', backgroundColor:"black"}}>
    
    <ScrollView horizontal={true} >
@@ -31,11 +31,9 @@ export default function MovieList(props) {
 }
 
 
-
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-    paddingTop: 50
-    },
-  });
-  
+  container: {
+    flex: 1,
+  paddingTop: 50
+  },
+});
