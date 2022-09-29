@@ -18,15 +18,11 @@ export default function MovieList(props) {
   } 
   
   
- 
-    
-   
-  
 
 
   return (
     <SafeAreaView>
-    <View style={{height:240, width:390, marginLeft:5, borderWidth:0.5, borderColor:'#dddddd', backgroundColor:"black"}}>
+    <View style={{height:241, width:390, marginLeft:5, borderWidth:0.5, borderColor:'#dddddd', backgroundColor:"black"}}>
    
    <ScrollView horizontal={true} >
     {props.movies.map((movie, index) => 
