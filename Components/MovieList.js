@@ -34,6 +34,7 @@ export default function MovieList(props) {
             <Image
                style={{flex:1, height:null, width:150, resizeMode: 'cover'}}
         source={{uri:movie.Poster}} 
+        
       />
 
 </TouchableOpacity>
